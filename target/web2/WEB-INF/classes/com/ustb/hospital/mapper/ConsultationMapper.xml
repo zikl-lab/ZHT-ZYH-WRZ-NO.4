@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径-->
+<mapper namespace="com.ustb.hospital.mapper.ConsultationMapper">
+    <resultMap id="deptMap" type="com.ustb.hospital.entity.Consultation">
+        <id column="consultation_id" property="consultationId" />
+        <result column="patient_id" property="patientId" />
+        <result column="doctor_id" property="doctorId" />
+        <result column="consultation_time" property="consultationTime" />
+        <result column="is_hospital_registered" property="isHospitalRegistered" />
+        <result column="is_hospitalized" property="isHospitalized" />
+        <result column="medical_advice_case" property="medicalAdviceCase" />
+    </resultMap>
+    <select id="selectAll" resultMap="deptMap">
+        select * from consultation
+    </select>
+    <select id="getMaxId" resultType="int">
+        select max(consultation_id) from consultation
+    </select>
+
+   <!-- <select id="selectFirstDept" resultMap="deptMap">
+        select * from consultation where department_level = #{level}
+    </select>
+
+    <select id="getMaxId" resultType="int">
+        select max(department_id) from departments
+    </select>
+
+    <select id="selectByName" resultMap="deptMap">
+        select * from departments where department_name = #{name}
+    </select>
+-->
+    <select id="selectById" resultMap="deptMap">
+        select * from consultation where consultation_id = #{consultation_id}
+    </select>
+
+  <select id="selectinformationById" resultMap="deptMap">
+        select * from consultation where consultation_id = #{consultation_id}
+    </select>
+    <select id="selectByPatId" resultMap="deptMap">
+        select * from consultation where patient_id = #{patient_id}
+    </select>
+
+    <!--<insert id="insert" parameterType="com.ustb.hospital.entity.Departments" useGeneratedKeys="true" keyProperty="departmentId">
+        INSERT INTO `hospitalldb`.`departments`(`department_name`, `department_pid`, `department_level`, `department_path`, `department_description`)
+        VALUES (#{departmentName}, #{departmentPid}, #{departmentLevel}, #{departmentPath}, #{departmentDescription})
+        <selectKey keyProperty="departmentId" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>-->
+    <insert id="insert">
+        INSERT INTO `hospitalbd`.`consultation`(`consultation_id`,`patient_id`, `doctor_id`,`consultation_time`, `is_hospital_registered`, `is_hospitalized`, `medical_advice_case`)
+        VALUES (#{consultationId},#{patientId}, #{doctorId}, #{consultationTime}, #{isHospitalRegistered}, #{isHospitalized},#{medicalAdviceCase})
+
+    </insert>
+
+
+    <delete id="deleteById">
+        DELETE FROM `hospitalbd`.`consultation` where consultation_id = #{id}
+    </delete>
+
+    <update id="updateById">
+        update consultation set patient_id=#{patid},doctor_id=#{docid},consultation_time=#{time},is_hospital_registered=#{ishr},is_hospitalized=#{ishd},medical_advice_case=#{mac} where consultation_id=#{id}
+    </update>
+
+
+
+
+</mapper>

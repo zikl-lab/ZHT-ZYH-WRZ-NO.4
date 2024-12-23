@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径-->
+<mapper namespace="com.ustb.hospital.mapper.HospitalizationMapper">
+    <resultMap id="hosMap" type="com.ustb.hospital.entity.Hospitalization">
+        <id column="hospitalization_id" property="hospitalizationId" />
+        <result column="patient_id" property="patientId" />
+        <result column="room_number" property="roomNumber" />
+        <result column="cost" property="cost" />
+        <result column="payment_status" property="paymentStatus" />
+        <result column="is_insured" property="isInsured" />
+        <result column="hospitalization_status" property="hospitalizationStatus" />
+    </resultMap>
+    <select id="selectAll" resultMap="hosMap">
+        select * from hospitalization
+    </select>
+    <delete id="deleteById">
+        DELETE FROM `hospitalbd`.`hospitalization` WHERE hospitalization_id = #{id}
+    </delete>
+    <update id="updateById">
+        update hospitalization set patient_id =#{pid},room_number=#{hosRoom},cost=#{cost},payment_status=#{paymentstatus},is_insured=#{isinsured},hospitalization_status=#{hospitalizationstatus} where hospitalization_id=#{id}
+    </update>
+    <select id="selectById" resultMap="hosMap">
+        select * from hospitalization where hospitalization_id = #{id}
+    </select>
+    <select id="selectByNumber" resultMap="hosMap">
+        select * from hospitalization where room_number = #{number}
+    </select>
+    <select id="getMaxId" resultType="int">
+        select max(hospitalization_id) from hospitalization
+    </select>
+    <insert id="insert">
+        INSERT INTO `hospitalbd`.`hospitalization`(`hospitalization_id`,`patient_id`, `room_number`, `cost`, `payment_status`,`is_insured`,`hospitalization_status`)
+        VALUES (#{hospitalizationId},#{patientId},#{roomNumber},#{cost},#{paymentStatus},#{isInsured},#{hospitalizationStatus})
+    </insert>
+</mapper>

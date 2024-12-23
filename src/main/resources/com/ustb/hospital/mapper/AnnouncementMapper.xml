@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径-->
+<mapper namespace="com.ustb.hospital.mapper.AnnouncementMapper">
+    <resultMap id="anctMap" type="com.ustb.hospital.entity.Announcement">
+        <id column="announcement_id" property="announcementId" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="creation_time" property="creationTime" />
+        <result column="creator" property="creator" />
+    </resultMap>
+    <select id="selectAll" resultMap="anctMap">
+        select * from announcement
+    </select>
+
+    <select id="getMaxId" resultType="int">
+        select max(announcement_id) from announcement
+    </select>
+
+    <select id="selectByTitle" resultMap="anctMap">
+        select * from announcement where title = #{title}
+    </select>
+
+    <select id="selectById" resultMap="anctMap">
+        select * from announcement where announcement_id = #{id}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO `hospitalbd`.`announcement`(`announcement_id`,`title`, `content`, `creation_time`,`creator`)
+        VALUES (#{announcementId},#{title},#{content},#{creationTime},#{creator})
+    </insert>
+
+    <update id="updateById">
+        update announcement set title =#{title},content =#{content},creation_time=#{creationTime}, creator=#{creator }where announcement_id=#{id}
+    </update>
+    <delete id="deleteById">
+        DELETE FROM `hospitalbd`.`announcement` WHERE announcement_id = #{id}
+    </delete>
+
+</mapper>

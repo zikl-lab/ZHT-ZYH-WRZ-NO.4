@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径-->
+<mapper namespace="com.ustb.hospital.mapper.DoctorsMapper">
+    <resultMap id="docMap" type="com.ustb.hospital.entity.Doctors">
+        <id column="doctor_id" property="doctorId" />
+        <result column="job_number" property="doctorNumber" />
+        <result column="password" property="doctorPassword" />
+        <result column="name" property="doctorName" />
+        <result column="avatar" property="doctorAvatar" />
+        <result column="phone" property="doctorPhone" />
+        <result column="email" property="doctorEmail" />
+        <result column="introduction" property="doctorIntion" />
+        <result column="registration_fee" property="doctorReFee" />
+        <result column="entry_date" property="doctorEnData" />
+        <result column="department_id" property="doctorDeptId" />
+        <result column="professional_title_id" property="doctorProTitleId" />
+        <association property="departments" javaType="com.ustb.hospital.entity.Departments">
+            <result column="department_name" property="departmentName"></result>
+        </association>
+        <association property="protitles" javaType="com.ustb.hospital.entity.Protitles">
+            <result column="title_name" property="titleName"></result>
+        </association>
+    </resultMap>
+    <select id="selectAll" resultMap="docMap">
+        select
+               doctor_id,
+               job_number,
+               name,
+               avatar,
+               phone,
+               email,
+               registration_fee,
+               entry_date,
+               department_name,
+               title_name
+        from
+            doctors doc,
+            departments dep,
+            professional_titles pt
+        where
+             doc.department_id =dep.department_id
+          and doc.professional_title_id =pt.id
+        <if test="doctorNumber!=null and doctorNumber!=''">
+            and doc.job_number = #{doctorNumber}
+        </if>
+        <if test="name!=null and name!=''">
+            and doc.name = #{name}
+        </if>
+        <if test="deptId!=null and deptId!=''">
+            and doc.department_id = #{deptId}
+        </if>
+
+    </select>
+
+    <select id="selectByName" resultMap="docMap">
+        select * from doctors where name = #{name}
+    </select>
+
+    <select id="selectByNumber" resultMap="docMap">
+        select * from doctors where job_number = #{number}
+    </select>
+
+    <select id="selectAllDoc" resultMap="docMap">
+        select * from doctors
+    </select>
+
+    <select id="selectById" resultMap="docMap">
+        select * from doctors where doctor_id = #{id}
+    </select>
+
+    <select id="getMaxId" resultType="int">
+        select max(doctor_id) from doctors
+    </select>
+
+    <insert id="insert">
+        INSERT INTO `hospitalbd`.`doctors`(`doctor_id`,`job_number`, `password`, `name`, `avatar`, `phone`, `email`, `introduction`, `registration_fee`, `entry_date`, `department_id`, `professional_title_id`)
+        VALUES (#{doctorId},#{doctorNumber},#{doctorPassword},#{doctorName},#{doctorAvatar},#{doctorPhone},#{doctorEmail},#{doctorIntion},#{doctorReFee},#{doctorEnData},#{doctorDeptId},#{doctorProTitleId})
+    </insert>
+
+    <update id="updateById">
+        update doctors set job_number =#{doctorNumber},password=#{doctorPassword},name=#{doctorName},avatar =#{doctorAvatar},phone=#{doctorPhone},email =#{doctorEmail},introduction=#{doctorIntion},registration_fee =#{doctorReFee},entry_date=#{doctorEnData},department_id =#{doctorDeptId},professional_title_id=#{doctorProTitleId} where doctor_id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM `hospitalbd`.`doctors` WHERE doctor_id = #{id}
+    </delete>
+
+    <select id="selectinformationById" resultMap="docMap">
+        select * from doctors where doctor_id = #{id}
+    </select>
+
+    <select id="selectinformationByName" resultMap="docMap">
+        select * from doctors where name = #{name}
+    </select>
+
+
+
+</mapper>

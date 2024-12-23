@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径-->
+<mapper namespace="com.ustb.hospital.mapper.PatientsMapper">
+    <resultMap id="patMap" type="com.ustb.hospital.entity.Patients">
+        <id column="patient_id" property="patientId" />
+        <result column="id_card_number" property="patientCard" />
+        <result column="password" property="patientPassword" />
+        <result column="name" property="patientName" />
+        <result column="avatar" property="patientAvatar" />
+        <result column="phone" property="patientPhone" />
+        <result column="email" property="patientEmail" />
+        <result column="balance" property="patientBalance" />
+    </resultMap>
+    <select id="selectAll" resultMap="patMap">
+        select * from patients
+    </select>
+
+    <select id="selectByCard" resultMap="patMap">
+        select * from patients where id_card_number = #{card}
+    </select>
+
+    <select id="selectByPhone" resultMap="patMap">
+        select * from patients where phone = #{phone}
+    </select>
+
+    <select id="selectById" resultMap="patMap">
+        select * from patients where patient_id = #{id}
+    </select>
+    <select id="selectinformationByName" resultMap="patMap">
+        select * from patients where name = #{name}
+    </select>
+    <select id="selectByName" resultMap="patMap">
+        select * from patients where name = #{name}
+    </select>
+
+    <select id="getMaxId" resultType="int">
+        select max(patient_id) from patients
+    </select>
+
+    <insert id="insert">
+        INSERT INTO `hospitalbd`.`patients`(`patient_id`, `id_card_number`,  `password`, `name` ,`avatar` ,`phone` ,`email` ,`balance` )
+        VALUES (#{patientId},#{patientCard},#{patientPassword},#{patientName},#{patientAvatar},#{patientPhone},#{patientEmail},#{patientBalance})
+    </insert>
+
+    <update id="updateById">
+        update patients set patient_id =#{id},id_card_number=#{number},password=#{password},name=#{name},avatar=#{avatar},phone=#{phone},email=#{email},balance=#{balance} where patient_id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM `hospitalbd`.`patients` WHERE patient_id = #{id}
+    </delete>
+
+</mapper>

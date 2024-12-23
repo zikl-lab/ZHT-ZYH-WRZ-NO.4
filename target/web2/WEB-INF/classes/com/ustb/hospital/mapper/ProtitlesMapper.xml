@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径-->
+<mapper namespace="com.ustb.hospital.mapper.ProtitlesMapper">
+    <resultMap id="protMap" type="com.ustb.hospital.entity.Protitles">
+        <id column="id" property="protitleId" />
+        <result column="title_name" property="protitleName" />
+        <result column="description" property="protitleDescription" />
+    </resultMap>
+    <select id="selectAll" resultMap="protMap">
+        select * from professional_titles
+    </select>
+
+    <select id="selectByName" resultMap="protMap">
+        select * from professional_titles where title_name = #{name}
+    </select>
+
+    <select id="selectById" resultMap="protMap">
+        select * from professional_titles where id = #{id}
+    </select>
+
+    <select id="getMaxId" resultType="int">
+        select max(id) from professional_titles
+    </select>
+
+    <insert id="insert">
+        INSERT INTO `hospitalbd`.`professional_titles`(`id`, `title_name`, `description`)
+        VALUES (#{protitleId},#{protitleName},#{protitleDescription})
+    </insert>
+
+    <update id="updateById">
+        update professional_titles set title_name =#{name},description=#{desc} where id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM `hospitalbd`.`professional_titles` WHERE id = #{id}
+    </delete>
+
+</mapper>

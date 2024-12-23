@@ -1,0 +1,484 @@
+p{
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+a{
+    text-decoration: none;
+}
+select,input{
+    border: none;
+    outline: none;
+}
+/* #top 模块内样式 */
+.top{
+    line-height: 30px;
+    font-size: 13px;
+    color: #868686;
+}
+.top .call{
+    float: left;
+    padding-left: 20px;
+    background: url(../images/tmbg-white.png) no-repeat center left;
+}
+.top .welcome{
+    float: right;
+}
+.top a{
+    color: #2da5e1;
+    padding-left: 10px;
+}
+/* #header 模块内样式 */
+.header .logo{
+    width: 402px;
+    height: 72px;
+    padding: 9px 0;
+    display: inline-block;
+    background-color: white;
+}
+.header .logo img{
+    width: 100%;
+    height: 110%;
+}
+.header .search {
+    width: 326px;
+    height: 38px;
+    position: absolute;
+    right: 0px;
+    top: 29px;
+    background-color: orange;
+}
+
+/* 导航栏  */
+/* #nav 模块内样式 */
+.nav .link{
+    display: inline-block;
+    float: left;
+    padding-left: 30px;
+    line-height: 36px;
+    color: #fff;
+    font-size: 16px;
+    min-width: 80px;
+    text-align: center;
+}
+.nav .right{
+    float: right;
+}
+
+.nav a:hover{
+    color: #d7f3ff;
+}
+/* 医院简绍区域 */
+/* 医院简绍区域 */
+.banner .wrap{
+    background-color: #F7F7F7;
+    height: 280px;
+    /* padding: 20px 20px; */
+}
+.banner .title{
+    height: 30px;
+    border-bottom: 1px solid #acacac;
+    margin: 10px 20px;
+    padding-top:10px;
+
+}
+.banner .title .title-left{
+    float: left;
+}
+
+.banner .title .title-left a{
+    color: orange;
+    font-size: 12px;
+}
+.banner .title .title-right{
+    float: right;
+    font-size: 12px;
+}
+.banner .title .title-right .title-right-tips{
+    color: blue;
+}
+
+.banner .banner-content{
+    margin: 10px 20px;
+}
+.banner .banner-content .left{
+    float: left;
+    width: 200px;
+    height: 150px;
+    background-color: pink;
+}
+.banner .banner-content .middle{
+    float: left;
+    width:450px;
+    font-size: 12px;
+    color:#acacac;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.banner .banner-content .middle span{
+    padding-left: 20px;
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    background: url(../images/tmbg-white.png) 0px 0px no-repeat;
+}
+.banner .banner-content .middle .icon-address{
+    background: url(../images/tmbg-white.png) 0px 0px no-repeat;
+}
+
+.banner .banner-content .middle .icon-web{
+    background-position: 0 -20px;
+}
+
+.banner .banner-content .middle .icon-tel{
+    background-position: 0 -40px;
+}
+
+.banner .banner-content .middle .icon-trans{
+    background-position: 0 -60px;
+}
+
+.banner .banner-content .middle .icon-tels{
+    background-position: 0 -60px;
+}
+
+.banner .banner-content .right{
+    float: right;
+    width: 250px;
+    height: 212px;
+    background-color: pink;
+}
+/* 医院体系区域 */
+/* 医院体系区域 导航栏*/
+.content .nav{
+    width: 100%;
+    height: 36px;
+    background-color:white;
+    border-bottom: 2px solid #60bff2;
+    margin-bottom: 10px;
+}
+
+.content .nav .link{
+    color:#60bff2;
+    padding-left: 0px;
+    margin-right: 30px;
+    min-width: 100px;
+}
+.content .nav .selected{
+    background-color: #60bff2;
+    color: #fff;
+}
+
+.content .schedule{
+    width: 100%;
+    height: 36px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* .content .schedule .back{
+	margin-left: 10px;
+	font-size: 14px;
+	font-weight: normal;
+	color:#60bff2;
+} */
+.content .schedule .back a{
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color:#60bff2;
+}
+
+/* 预约挂号 */
+.content-lists .content-news .caption,
+.content-lists .content-tab .caption{
+    background-color: #eceef2;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 20px;
+}
+
+.content-lists .content-news .caption{
+    color:#acacac;
+    padding-left: 8px;
+}
+
+.content-lists .content-news .caption span{
+    color:#60bff2;
+    font-size: 12px;
+}
+/* .content .content-tab .content-table table, th, td */
+
+.content-lists .content-list{
+    display: none;
+}
+.content-lists .focus{
+    display: block;
+}
+
+.content-table table,
+.content-table tr,
+.content-table td{
+    border: 0px;
+    border-collapse:collapse;
+}
+.content-table td{
+    width:120px;
+    height: 30px;
+    line-height: 30px;
+}
+.content-table td a{
+    font-weight: bold;
+    padding-left: 20px;
+    color: black;
+}
+.content-tab .content-table .classify{
+    width:200px;
+    background-color: #CEFFCE;
+    vertical-align:top;
+    text-align: center;
+}
+.content-tab .content-table .classify-item{
+    width:120px;
+}
+
+
+.content-lists .content-news .content-news-tips{
+    height: 236px;
+    overflow: auto;
+}
+
+.content-lists .content-news .line{
+    color:#acacac;
+    line-height: 20px;
+    font-size: 12px;
+    width: 100%;
+}
+
+.content-lists .content-news .line div{
+    display: inline-block;
+    float: left;
+    padding-top: 5px;
+    width: 130px;
+}
+.content-lists .content-news .line .line-name{
+    color:black;
+    width: 60px;
+    padding-left: 8px;
+}
+
+
+.content-lists .content-lists{
+    float: left;
+    width: 910px;
+    height: 410px;
+    margin-right: 20px;
+
+}
+
+.content-lists .content-list .hospitals {
+    background-color: lightskyblue;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.content-lists .content-list .content-tips {
+    color: black;
+    float: left;
+    width: 910px;
+    height: 360px;
+    overflow: auto;
+    margin-right: 20px;
+    border: 1px solid #74bbbb; /* 蓝色边缘线 */
+    background-color: #f0f0f0; /* 灰色背景色 */
+}
+
+.content-lists .content-list .content-tips .lines {
+    color: black; /* 黑色字体 */
+    font-size: 16px; /* 20号字体 */
+    width: 100%;
+    padding-left: 8px;
+}
+/* 医院介绍 */
+
+
+/* 预约须知 */
+
+
+
+
+/* 停诊信息 */
+.content-list .stop-title{
+    text-align: center;
+    height: 38px;
+    line-height: 38px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.content-list .stop-tips-table th,
+.content-list .stop-tips-table td,
+.content-list .stop-tips-table{
+    font-size: 12px;
+    font-weight: normal;
+    color:#acacac;
+    border: 1px solid #acacac;
+    padding: 5px 10px;
+    text-align: center;
+    border-collapse:collapse;
+}
+.content-list .stop-tips-table{
+    margin: 0 auto;
+}
+.content-list .stop-tips-table th{
+    min-width: 50px;
+}
+.content-list .stop-tips-table th:nth-of-type(4){
+    width: 200px;
+}
+.content-list .stop-tips-table th:nth-of-type(6){
+    width: 120px;
+}
+
+/* 查询取消 */
+.search-cancel{
+    padding: 100px;
+    border:1px solid #acacac;
+}
+.search-cancel .line{
+    margin: 0 auto;
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+    /* background-color: yellow; */
+    text-align: center;
+}
+.search-cancel .line input{
+    width: 200px;
+    border:1px solid #acacac;
+    height: 18px;
+    /* display: inline-block; */
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.search-cancel .line button{
+    width: 80px;
+    height: 20px;
+    background-color: #60bff2;
+    border-width: 0px;
+    color:white;
+    font-size: 12px;
+    /* margin-top: 5px; */
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.search-cancel .line button:hover{
+    cursor: pointer;
+}
+/* 科室排班表 */
+
+.content-lists .wrap:nth-of-type(2) table{
+    width: 1000px;
+    height: 320px;
+    border-collapse:collapse;
+    border: 1px solid #ccc;
+}
+.content-lists .wrap:nth-of-type(2) table td{
+    border: 1px solid #ccc;
+}
+
+
+.content-lists .wrap .rightBtn,
+.content-lists .wrap .leftBtn{
+    width: 25px;
+    /* float: left; */
+    height: 270px;
+    /* border-right: 1px solid #ccc; */
+}
+
+
+.content-lists .wrap .wrap_btn{
+    height: 30px;
+}
+.content-lists .wrap .rightBtn .status,
+.content-lists .wrap .leftBtn .status{
+    height: 80px;
+    line-height: 40px;
+    text-align: right;
+    padding-right: 2px;
+    background-color: #CEFFCE;
+    font-size: 12px;
+
+}
+
+.content-lists .wrap .leftBtn .btn{
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color:  transparent #60bff2 transparent transparent;
+    margin-right: 7px;
+}
+.content-lists .wrap .rightBtn .btn{
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color:  transparent transparent transparent #60bff2;
+    margin-left: 7px;
+
+}
+.content-lists .wrap .main{
+    /* width : 90px * 7 */
+    width: 700px;
+    float: left;
+    height: 270px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.content-lists .wrap:nth-of-type(2) .content-news{
+    /* 1000 - 25 *2 - 700 = 250px; */
+    /* width: 248px; */
+    height: 270px;
+    /* position: absolute;
+    top:0px;
+    right: 0px; */
+    overflow: auto;
+    /* float: right; */
+    border: 0px;
+}
+.content-lists .wrap .content-news .title{
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+}
+.content-lists .wrap .bottom{
+    width: 1000px;
+    height: 50px;
+    /* border-top: 1px solid #acacac; */
+    line-height: 50px;
+    text-align: center;
+}
+.content-lists .wrap .bottom .choice{
+    background: url(../img/icon-info.jpg) 0 0 no-repeat;
+    padding-left: 30px;
+}
+
+
+/* footer */
+.footer{
+    line-height: 70px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+

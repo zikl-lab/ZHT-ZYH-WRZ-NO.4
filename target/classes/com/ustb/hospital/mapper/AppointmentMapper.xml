@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径-->
+<mapper namespace="com.ustb.hospital.mapper.AppointmentMapper">
+    <resultMap id="appointMap" type="com.ustb.hospital.entity.Appointment">
+        <id column="appointment_id" property="appointmentId" />
+        <result column="patient_id" property="patientId" />
+        <result column="doctor_id" property="doctorId" />
+        <result column="appointment_date" property="appointmentDate" />
+        <result column="appointment_time" property="appointmentTime" />
+        <result column="status" property="status" />
+    </resultMap>
+    <resultMap id="scheduleMap" type="com.ustb.hospital.entity.DoctorSchedules">
+        <id column="schedule_id" property="scheduleId"  />
+        <id column="doctor_id" property="doctorId" />
+        <result column="date" property="date"/>
+        <result column="shift_time" property="shiftTime"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="is_available" property="isAvailable"/>
+        <result column="visit_count" property="visitCount"/>
+        <result column="remarks" property="remarks"/>
+    </resultMap>
+    <select id="selectAll" resultMap="appointMap">
+        select * from appointments
+    </select>
+    <delete id="deleteById">
+        DELETE FROM `hospitalbd`.`appointments` WHERE appointment_id = #{id}
+    </delete>
+    <update id="updateById">
+        update appointments set patient_id =#{pid},doctor_id =#{did},appointment_date=#{date},appointment_time=#{time},status=#{status} where appointment_id=#{id}
+    </update>
+    <select id="selectById" resultMap="appointMap">
+        select * from appointments where appointment_id = #{id}
+    </select>
+    <select id="getMaxId" resultType="int">
+        select max(appointment_id) from appointments
+    </select>
+    <insert id="insert">
+        INSERT INTO `hospitalbd`.`appointments`(`appointment_id`,`patient_id`, `doctor_id`, `appointment_date`, `appointment_time`,`status`)
+        VALUES (#{appointmentId},#{patientId},#{doctorId},#{appointmentDate},#{appointmentTime},#{status})
+    </insert>
+    <select id="selectByName" resultMap="appointMap">
+        select * from appointments where doctor_id = #{name}
+    </select>
+
+    <select id="selectBeforeByDid" resultMap="scheduleMap">
+        SELECT * FROM doctor_schedule WHERE `visit_count` - (
+            SELECT  COUNT(*) FROM appointments
+                    WHERE
+                        appointments.`doctor_id` = #{doctorId}
+                      AND appointments.`appointment_date` = doctor_schedule.`date`
+                      AND appointments.`appointment_time` = doctor_schedule.`shift_time`
+                      AND appointments.`status` IN ('booked', 'completed')
+                ) > 0 AND doctor_schedule.`doctor_id` = #{doctorId}
+    </select>
+
+    <select id="selectBefore" resultMap="scheduleMap">
+        SELECT
+            *
+        FROM
+            doctor_schedule
+        WHERE
+                    `visit_count` - (
+                    SELECT
+                        COUNT(*)
+                    FROM
+                        appointments
+                    WHERE
+                        appointments.`doctor_id` = doctor_schedule.`doctor_id`
+                      AND appointments.`appointment_date` = doctor_schedule.`date`
+                      AND appointments.`appointment_time` = doctor_schedule.`shift_time`
+                      AND appointments.`status` IN ('booked', 'completed')
+                ) > 0
+    </select>
+
+</mapper>
